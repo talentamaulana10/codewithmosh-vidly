@@ -5,7 +5,7 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <main className="container">
+      <main className="container  ">
         <h1>hello world</h1>
       </main>
     );
