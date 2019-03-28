@@ -11,8 +11,13 @@ export default class movie extends Component {
   };
 
   render() {
+      const {length:count}=this.state.movies
+    if (count === 0)
+      return <p>tidak ada movie di database</p>;
     return (
-      <div>
+      
+       <React.Fragment>
+            <p>terdapat {count} movie di database </p>
         <table className="table">
           <thead>
             <tr>
@@ -42,7 +47,8 @@ export default class movie extends Component {
             ))}
           </tbody>
         </table>
-      </div>
+       </React.Fragment>
+     
     );
   }
 }
