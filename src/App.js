@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import Movie from "./component/movie";
 
 class App extends Component {
   render() {
     return (
       <main className="container  ">
-        <h1>hello world</h1>
+        <Movie />
       </main>
     );
   }
