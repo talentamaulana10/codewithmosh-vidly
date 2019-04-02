@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
-export default class movie extends Component {
+
+import Like from "./common/like";
+
+class Movies extends Component {
   state = {
     movies: getMovies()
   };
@@ -10,21 +13,34 @@ export default class movie extends Component {
     this.setState({ movies });
   };
 
+  handleLike = movie => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = { ...movies[index] };
+    movies[index].liked = !movies[index].liked;
+    this.setState({ movies });
+  };
+
   render() {
-      const {length:count}=this.state.movies
+    const { length: count } = this.state.movies;
+
     if (count === 0)
-      return <p>tidak ada movie di database</p>;
+      return <h1 className="body1">Tidak ada film dalam database.</h1>;
     return (
-      
-       <React.Fragment>
-            <p>terdapat {count} movie di database </p>
+      <React.Fragment>
+        <h3 className="body">
+          {" "}
+          semuanya ada di sini {count} film bollywood dalam database.
+        </h3>
         <table className="table">
           <thead>
             <tr>
               <th>Title</th>
-              <th>Title</th>
-              <th>Title</th>
-              <th>Title</th>
+              <th>Movies</th>
+              <th>Stock</th>
+              <th>Rate</th>
+              <th />
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -35,20 +51,26 @@ export default class movie extends Component {
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
                 <td>
-                  {" "}
+                  <Like
+                    liked={movie.liked}
+                    onClick={() => this.handleLike(movie)}
+                  />
+                </td>
+                <td>
                   <button
                     onClick={() => this.handleDelete(movie)}
                     className="btn btn-danger btn-sm"
                   >
-                    Delete
+                    klik Remove
                   </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-       </React.Fragment>
-     
+      </React.Fragment>
     );
   }
 }
+
+export default Movies;
