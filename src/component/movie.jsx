@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
-import Pagination from "./common/pagination";
 import Like from "./common/like";
+import Pagination from "./common/pagination";
 
 class Movies extends Component {
   state = {
@@ -29,7 +29,7 @@ class Movies extends Component {
     const { length: count } = this.state.movies;
 
     if (count === 0)
-      return <h1 className="body1">Tidak ada film dalam database.</h1>;
+      return <h1 className="body1">Tidak ada film dalam database!!!!!!!!!!</h1>;
     return (
       <React.Fragment>
         <h3 className="body">
@@ -81,5 +81,4 @@ class Movies extends Component {
     );
   }
 }
-
 export default Movies;
