@@ -38,11 +38,19 @@ class Movies extends Component {
 
   render() {
     const { length: count } = this.state.movies;
-    const { pageSize, currentPage, movies: allMovies } = this.state;
+    const {
+      pageSize,
+      currentPage,
+      movies: allMovies,
+      selectedGenre
+    } = this.state;
 
     if (count === 0)
       return <h1 className="body1">Tidak ada film dalam database!!!!!!!!!!</h1>;
-    const movies = paginate(allMovies, currentPage, pageSize);
+    const filtered = selectedGenre
+      ? allMovies.filter(m => m.genre._id === selectedGenre._id)
+      : allMovies;
+    const movies = paginate(filtered, currentPage, pageSize);
     return (
       <div className="row">
         <div className="col-3">
@@ -55,7 +63,8 @@ class Movies extends Component {
         <div className="col">
           <p className="body">
             {" "}
-            semuanya ada di sini {count} film bollywood dalam database.
+            semuanya ada di sini {filtered.length} film hollywood dalam
+            database.
           </p>
           <table className="table">
             <thead>
@@ -95,7 +104,7 @@ class Movies extends Component {
           </table>
           <Pagination
             onPageChange={this.handlePageChange}
-            itemsCount={count}
+            itemsCount={filtered.length}
             currentPage={currentPage}
             pageSize={pageSize}
           />
