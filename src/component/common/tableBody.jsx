@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+
 class TableBody extends Component {
   render() {
     const { data, columns } = this.props;
     return (
-      <tbody>
+      <tbod>
         {data.map(item => (
           <tr>
             {columns.map(column => (
@@ -11,7 +12,7 @@ class TableBody extends Component {
             ))}
           </tr>
         ))}
-      </tbody>
+      </tbod>
     );
   }
 }
