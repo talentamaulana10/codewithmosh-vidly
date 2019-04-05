@@ -7,7 +7,7 @@ class Like extends Component {
     return (
       <i
         onClick={this.props.onClick}
-        style={{ cursor: "pointer", color: "black" }}
+        style={{ cursor: "pointer" }}
         className={classes}
         aria-hidden="true"
       />
